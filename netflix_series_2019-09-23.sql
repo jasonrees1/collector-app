@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.7.27)
 # Database: netflix_series
-# Generation Time: 2019-09-23 12:26:51 +0000
+# Generation Time: 2019-09-23 12:59:14 +0000
 # ************************************************************
 
 
@@ -25,12 +25,12 @@
 
 CREATE TABLE `favourites` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `TITLE` varchar(50) NOT NULL DEFAULT '',
+  `TITLE` varchar(255) NOT NULL DEFAULT '',
   `START DATE` date NOT NULL,
   `END DATE` date DEFAULT NULL,
   `NUMBER OF SEASONS` int(3) NOT NULL,
   `NUMBER OF EPISODES` int(3) NOT NULL,
-  `DIRECTOR` varchar(30) NOT NULL DEFAULT '',
+  `DIRECTOR` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
