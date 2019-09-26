@@ -31,9 +31,3 @@ function print_values($series)
     }
     return $seriesHtml;
 }
-
-
-
-
-
-

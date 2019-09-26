@@ -3,7 +3,7 @@
 
 use PHPUnit\Framework\TestCase;
 
-require_once('../function.php');
+require_once('../functions.php');
 
 class functionTest extends TestCase
 {
