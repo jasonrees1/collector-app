@@ -5,21 +5,38 @@
     <title>Netflix Series Collection</title>
 </head>
 <body>
+<h2>Complete all fields to add a new series to your collection</h2>
+<!-- -->
+<form method="post" action="adddata.php">
+    Series Title:
+    <input type="text" name="seriestitle">
+    Date Started:
+    <input type="date" name="datestarted">
+    Date Ended:
+    <input type="date" name="dateended">
+    Number of seasons:
+    <input type="number" name="noofseasons" min="1" max="50">
+    Number of episodes:
+    <input type="number" name="noofepisodes" min="1" max="300">
+    Director:
+    <input type="text" name="director">
+    <input type="submit" value="submit">
+</form>
+
 <?php
-$db = new PDO('mysql:host=db;dbname=netflix_series','root','password');
-$db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE,PDO::FETCH_ASSOC);
-$query = $db-> query('SELECT `id`,`title`,`start_date`,`end_date`,`number_of_seasons`,`number_of_episodes`,`director` FROM `favourites`');
+//As function connect_to_netflix_series_db has no parameters it will run here
+require_once 'function.php';
+
+//this calls the function to return the database connection
+$db = connect_to_netflix_series_db();
+
+$query = $db->query('SELECT `id`,`title`,`start_date`,`end_date`,`number_of_seasons`,`number_of_episodes`,`director` FROM `favourites`');
+$query->execute();
 $series = $query->fetchAll();
-foreach($series as $serie) {
-    echo '<div>';
-    echo '<h2>Title: ' . $serie['title'] . '</h2>';
-    echo '<p>Start Date: ' . $serie['start_date'] . '</p>';
-    echo '<p>End Date: ' . $serie['end_date'] . '</p>';
-    echo '<p>Number Of Seasons: ' . $serie['number_of_seasons'] . '</p>';
-    echo '<p>Number Of Episodes: ' . $serie['number_of_episodes'] . '</p>';
-    echo '<p>Director: ' . $serie['director'] . '</p>';
-    echo '</div>';
-}
+
+
+$htmlToShow = print_values($series);
+echo $htmlToShow;
 ?>
 </body>
 </html>
