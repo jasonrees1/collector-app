@@ -16,7 +16,8 @@ function connect_to_netflix_series_db () {
  *
  * @return string of the array formatted in HTML to be more readable
  */
-function print_values($series) {
+function print_values($series)
+{
     $seriesHtml = '';
     foreach($series as $serie) {
         $seriesHtml .= '<div>';
